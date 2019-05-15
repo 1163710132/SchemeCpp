@@ -6,13 +6,24 @@
 #define SCHEMECPP_INTERPRETER_H
 
 #include <string>
+#include "context.h"
 #include "value.h"
+
+namespace scheme{
 
 class Interpreter{
 public:
-    Value* interpret(Value* input){
+    Context* global;
 
+    explicit Interpreter(){
+        global = new Context(nullptr);
     }
+
+    Value* interpret(Value* input){
+        return input->evaluate(global);
+    }
+};
+
 };
 
 #endif //SCHEMECPP_INTERPRETER_H

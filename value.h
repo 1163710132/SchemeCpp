@@ -5,9 +5,10 @@
 #ifndef SCHEMECPP_VALUE_H
 #define SCHEMECPP_VALUE_H
 
-#include "context.h"
 
-class Value;
+namespace scheme{
+
+class Context;
 
 class Value{
 public:
@@ -75,6 +76,8 @@ public:
     T* as(){
         return static_cast<T>(this);
     }
+};
+
 };
 
 #endif //SCHEMECPP_VALUE_H

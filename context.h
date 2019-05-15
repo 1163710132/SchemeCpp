@@ -6,16 +6,17 @@
 #define SCHEMECPP_CONTEXT_H
 
 #include <map>
-#include <unordered_map>
+#include "value.h"
 #include "values.h"
 
-using std::map;
-using std::unordered_map;
+namespace scheme{
 
 class Context{
 private:
     Context* parent;
-    map<Symbol, Value*> localValues;
+    std::map<Symbol, Value*> localValues;
+
+public:
 
     explicit Context(Context* parent): parent(parent){};
 public:
@@ -49,5 +50,7 @@ public:
         return child;
     }
 };
+
+}
 
 #endif //SCHEMECPP_CONTEXT_H

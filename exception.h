@@ -11,6 +11,8 @@
 using std::exception;
 using std::string;
 
+namespace scheme{
+
 class SchemeException: exception{
 private:
     std::string reason;
@@ -20,6 +22,8 @@ public:
     const char *what() const noexcept override {
         return reason.c_str();
     }
+};
+
 };
 
 #endif //SCHEMECPP_EXCEPTION_H

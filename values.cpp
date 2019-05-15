@@ -7,7 +7,9 @@
 
 #include <vector>
 
-Value *Pair::evaluate(Context *context) {
+namespace scheme{
+
+Value* Pair::evaluate(Context *context) {
     Value* left = this->left->evaluate(context);
     if(left == nullptr && this->left->isSymbol()) {
         //TODO evil
@@ -122,3 +124,5 @@ Value *Pair::evaluate(Context *context) {
     }
     return left;
 }
+
+};

@@ -9,6 +9,8 @@
 #include "value.h"
 #include "pch.h"
 
+namespace scheme{
+
 using std::string;
 
 class SelfEvaluateValue: public Value{
@@ -131,6 +133,8 @@ public:
     Value* body;
 
     explicit Procedure(Value* args, Value* body): args(args), body(body){}
+};
+
 };
 
 #endif //SCHEMECPP_VALUES_H
