@@ -6,6 +6,7 @@
 #include "exception.h"
 
 #include <vector>
+#include "context.h"
 
 namespace scheme{
 
@@ -27,7 +28,7 @@ Value* Pair::evaluate(Context *context) {
                 //case function define
                 Value *functionName = pattern->getListElementAt(0);
                 Value *functionArgs = pattern->getListElementRange(1);
-                context->defineValue(functionName->as<Symbol>(), new Procedure(functionArgs, body));
+                context->defineValue(*functionName->as<Symbol>(), new Procedure(functionArgs, body));
                 return new Nil();
             } else throw SchemeException("Argument error");
         } else if (symbol->identifier == string("let")) {
