@@ -1,0 +1,8 @@
+//
+// Created by chenjs on 19-5-15.
+//
+
+#ifndef SCHEMECPP_CONTINUATION_H
+#define SCHEMECPP_CONTINUATION_H
+
+#endif //SCHEMECPP_CONTINUATION_H
