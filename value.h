@@ -5,6 +5,7 @@
 #ifndef SCHEMECPP_VALUE_H
 #define SCHEMECPP_VALUE_H
 
+#include "continuation.h"
 
 namespace scheme{
 
@@ -72,6 +73,10 @@ public:
     virtual Value* evaluate(Context* context){
         return nullptr;
     }
+    virtual void evaluate(Context* context, const Continuation& continuation){
+        continuation(nullptr);
+    }
+    virtual bool forEach(const std::function<bool(Value*, bool)>& function){}
     template <typename T>
     T* as(){
         return static_cast<T>(this);

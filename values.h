@@ -26,20 +26,19 @@ public:
     Value *evaluate(Context *context) override {
         return this;
     }
+
+    void evaluate(Context* context, const Continuation& continuation) override {
+        continuation(this);
+    }
 };
 
 class Symbol: public Value{
 public:
     string identifier;
 public:
-    Value* evaluate(Context *context) override {
-        Value* defined = context->getValue(*this);
-        if(defined != nullptr){
-            return defined;
-        }else{
-            return nullptr;
-        }
-    }
+    Value* evaluate(Context *context) override;
+
+    void evaluate(Context *context, const Continuation &continuation) override;
 
     bool operator<(const Symbol &rhs) const {
         return identifier < rhs.identifier;
@@ -76,6 +75,10 @@ public:
 
 public:
     Value* evaluate(Context *context) override;
+
+    void evaluate(Context *context, const Continuation &continuation) override;
+
+    bool forEach(const std::function<bool (Value*, bool)> &function) override;
 
     Value *getLeft() override {
         return left;
